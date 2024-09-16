@@ -9,8 +9,17 @@ public class GunLight : MonoBehaviour
   public GameObject gunLight;
   public UnityEvent OnTrigger;
 
+  public AudioManager audioManager;
+
+  private void Awake()
+  {
+    audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+  }
+
   private void OnTriggerEnter2D(Collider2D collision)
   {
     OnTrigger.Invoke();
+
+    audioManager.PlaySFX(audioManager.hit);
   }
 }

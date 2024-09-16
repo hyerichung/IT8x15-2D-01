@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class FuleCan : MonoBehaviour
+public class Gun : MonoBehaviour
 {
-  public GameObject fuelCan;
-
+  public GameObject gun;
   public UnityEvent OnTrigger;
+
   public AudioManager audioManager;
 
   private void Awake()
@@ -17,10 +17,9 @@ public class FuleCan : MonoBehaviour
 
   private void OnTriggerEnter2D(Collider2D collision)
   {
-    fuelCan.SetActive(false);
-
     OnTrigger.Invoke();
 
-    audioManager.PlaySFX(audioManager.heal);
+    audioManager.PlaySFX(audioManager.electronic1);
   }
 }
+
