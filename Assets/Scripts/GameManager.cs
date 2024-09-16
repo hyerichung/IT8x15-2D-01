@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
   public static float hp;
   public static bool isAlive;
 
-  public GameObject OverUI;
+  public GameObject GameOverUI;
 
   void Awake()
   {
@@ -29,13 +29,14 @@ public class GameManager : MonoBehaviour
   public void GameOver()
   {
     isAlive = false;
-    OverUI.SetActive(true);
+    GameOverUI.SetActive(true);
   }
 
   public void Restart()
   {
     isAlive = true;
     hp = 100f;
+    GameOverUI.SetActive(false);
   }
 
   public void IncreaseHp(float health)
