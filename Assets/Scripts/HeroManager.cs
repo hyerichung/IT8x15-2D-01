@@ -6,13 +6,12 @@ public class HeroManager : MonoBehaviour
 {
   public enum Transition { Stand, Run, Fall, Jump };
 
-  public float jumpForce = 7.0f;
   public bool onGround = false;
-
+  public float jumpForce = 7.0f;
   public int movementSpeed = 10;
 
-  private Animator anim;
-  private Rigidbody2D rb;
+  Animator anim;
+  Rigidbody2D rb;
 
   void Awake()
   {
@@ -40,7 +39,6 @@ public class HeroManager : MonoBehaviour
       {
         rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
       }
-
     }
     else if (Input.GetKey(KeyCode.RightArrow))
     {
@@ -48,7 +46,6 @@ public class HeroManager : MonoBehaviour
 
       if (onGround)
       {
-
         ChangeAnimation(Transition.Run);
       }
     }
@@ -83,7 +80,7 @@ public class HeroManager : MonoBehaviour
     onGround = true;
   }
 
-  // exact moment for landing
+  // exact landing moment
   void OnCollisionEnter2D(Collision2D collision)
   {
     onGround = true;

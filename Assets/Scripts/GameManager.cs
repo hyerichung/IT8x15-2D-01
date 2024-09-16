@@ -8,14 +8,16 @@ public class GameManager : MonoBehaviour
   public static bool isAlive;
 
   public GameObject GameOverUI;
+  public AudioManager audioManager;
 
   void Awake()
   {
+    audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+
     isAlive = true;
     hp = 100f;
   }
 
-  // Start is called before the first frame update
   void Start()
   {
     if (!isAlive) return;
@@ -28,6 +30,11 @@ public class GameManager : MonoBehaviour
 
   public void GameOver()
   {
+    if (isAlive)
+    {
+      audioManager.PlaySFX(audioManager.over);
+    }
+
     isAlive = false;
     GameOverUI.SetActive(true);
   }
@@ -36,21 +43,36 @@ public class GameManager : MonoBehaviour
   {
     isAlive = true;
     hp = 100f;
+
     GameOverUI.SetActive(false);
   }
 
   public void IncreaseHp(float health)
   {
-    if (hp >= 100f) return;
+    float addedHp = hp += health;
 
-    hp += health;
+    if (addedHp >= 100f)
+    {
+      hp = 100f;
+    }
+    else
+    {
+      hp = addedHp;
+    };
   }
 
   public void DecreaseHp(float health)
   {
-    if (hp <= 0) return;
+    float decreasedHp = hp -= health;
 
-    hp -= health;
+    if (decreasedHp <= 0)
+    {
+      hp = 0;
+    }
+    else
+    {
+      hp = decreasedHp;
+    }
   }
 
 }
