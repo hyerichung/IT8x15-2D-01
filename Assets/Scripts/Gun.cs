@@ -13,33 +13,33 @@ public class Gun : MonoBehaviour
   public AudioManager audioManager;
 
   Animator anim;
-  private int currentState;
+  int currentAnimState;
 
-  private void Awake()
+  void Awake()
   {
     audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
 
     anim = GetComponent<Animator>();
-    currentState = 0;
+    currentAnimState = 0;
   }
 
-  private void Update()
+  void Update()
   {
     if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
     {
-      currentState++;
+      currentAnimState++;
 
-      if (currentState == 3)
+      if (currentAnimState == 3)
       {
-        currentState = 0;
+        currentAnimState = 0;
       }
 
-      anim.SetInteger("State", currentState);
+      anim.SetInteger("State", currentAnimState);
 
     }
   }
 
-  private void OnTriggerEnter2D(Collider2D collision)
+  void OnTriggerEnter2D(Collider2D collision)
   {
     OnTrigger.Invoke();
 

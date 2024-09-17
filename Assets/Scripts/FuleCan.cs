@@ -10,12 +10,12 @@ public class FuleCan : MonoBehaviour
   public UnityEvent OnTrigger;
   public AudioManager audioManager;
 
-  private void Awake()
+  void Awake()
   {
     audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
   }
 
-  private void OnTriggerEnter2D(Collider2D collision)
+  void OnTriggerEnter2D(Collider2D collision)
   {
     fuelCan.SetActive(false);
 
