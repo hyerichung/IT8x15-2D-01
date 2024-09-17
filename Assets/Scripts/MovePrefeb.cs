@@ -8,14 +8,11 @@ public class MovePrefab : MonoBehaviour
   public GameObject currentPrefab;
   public float incrementX;
 
-
-  // todo: next가 아니라 현재 prefeb이 아니고 움직이려고 하는 prefeb이 아닌 prefeb의 object를 미리 결정해놓는 용도임
-  // 변수명은 next가 아니라 제 3의 변수명으로 변경되어야함
-  public GameObject gunLightOnNextPrefeb;
-  public GameObject crateOnNextPrefeb;
-  public GameObject fuelCanOnNextPrefeb;
-  public GameObject laserOnNextPrefeb;
-  public GameObject gunOnNextPrefeb;
+  public GameObject gunLightToBeRandom;
+  public GameObject crateToBeRandom;
+  public GameObject fuelCanToBeRandom;
+  public GameObject laserToBeRandom;
+  public GameObject gunToBeRandom;
 
   void OnTriggerEnter2D()
   {
@@ -24,14 +21,13 @@ public class MovePrefab : MonoBehaviour
 
     prefabToMove.transform.position = temp;
 
-    /// decide next prefeb's gameObject active status
     GameObject[] objects = new GameObject[5]
     {
-    gunLightOnNextPrefeb,
-    crateOnNextPrefeb,
-    fuelCanOnNextPrefeb,
-    laserOnNextPrefeb,
-    gunOnNextPrefeb
+    gunLightToBeRandom,
+    crateToBeRandom,
+    fuelCanToBeRandom,
+    laserToBeRandom,
+    gunToBeRandom
     };
 
     for (int i = 0; i < objects.Length; i++)

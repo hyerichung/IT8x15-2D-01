@@ -15,5 +15,7 @@ public class Bullet : MonoBehaviour
     OnTrigger.Invoke();
 
     audioManager.PlaySFX(audioManager.electronic1);
+
+    bullet.SetActive(false);
   }
 }
