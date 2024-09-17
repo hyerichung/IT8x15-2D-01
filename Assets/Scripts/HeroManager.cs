@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -42,21 +43,24 @@ public class HeroManager : MonoBehaviour
     }
     else if (Input.GetKey(KeyCode.RightArrow))
     {
-      rb.velocity = new Vector2(movementSpeed, rb.velocity.y);
-
       if (onGround)
       {
         ChangeAnimation(Transition.Run);
       }
+
+      rb.velocity = new Vector2(movementSpeed, rb.velocity.y);
     }
     else if (Input.GetKey(KeyCode.LeftArrow))
     {
-      rb.velocity = new Vector2(movementSpeed * -1, rb.velocity.y);
-
       if (onGround)
       {
         ChangeAnimation(Transition.Run);
       }
+
+      // put limitation for left movement with currentPrefeb and hero position X as prefebs keep moving forward
+      if (rb.position.x < 5 || rb.position.x % 25.5 < 5) return;
+
+      rb.velocity = new Vector2(movementSpeed * -1, rb.velocity.y);
     }
     else if (!Input.anyKey)
     {
@@ -70,8 +74,9 @@ public class HeroManager : MonoBehaviour
   // jumping
   void OnCollisionExit2D(Collision2D collision)
   {
-    onGround = false;
     ChangeAnimation(Transition.Jump);
+
+    onGround = false;
   }
 
   // landing moment

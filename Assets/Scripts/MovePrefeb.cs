@@ -8,6 +8,9 @@ public class MovePrefab : MonoBehaviour
   public GameObject currentPrefab;
   public float incrementX;
 
+
+  // todo: next가 아니라 현재 prefeb이 아니고 움직이려고 하는 prefeb이 아닌 prefeb의 object를 미리 결정해놓는 용도임
+  // 변수명은 next가 아니라 제 3의 변수명으로 변경되어야함
   public GameObject gunLightOnNextPrefeb;
   public GameObject crateOnNextPrefeb;
   public GameObject fuelCanOnNextPrefeb;

@@ -23,11 +23,6 @@ public class GameManager : MonoBehaviour
     if (!isAlive) return;
   }
 
-  void Update()
-  {
-    Debug.Log(hp);
-  }
-
   public void GameOver()
   {
     if (isAlive)
